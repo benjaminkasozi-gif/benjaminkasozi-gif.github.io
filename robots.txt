@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://REPLACE-WITH-YOUR-SITE-URL/sitemap.xml
+Sitemap: https://benjaminkasozi-gif.github.io/sitemap.xml
