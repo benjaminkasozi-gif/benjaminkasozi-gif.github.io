@@ -340,7 +340,7 @@
   }
   .athlete-goal{ font-family:"IBM Plex Mono", monospace; font-size:0.85rem; color:var(--text-muted); }
   .athlete-steps{ display:grid; grid-template-columns:repeat(auto-fit, minmax(240px,1fr)); gap:1.25rem; margin-top:1.5rem; }
-  .athlete-step{ background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:1.4rem 1.5rem; }
+  .athlete-step{ background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:1.4rem 1.5rem; min-width:0; }
   .athlete-step-title{
     font-family:"IBM Plex Mono", monospace; font-size:0.72rem; letter-spacing:0.1em;
     text-transform:uppercase; font-weight:600; color:var(--accent);
@@ -348,6 +348,7 @@
   .athlete-step-body{
     margin-top:0.6rem; font-family:"Big Shoulders Display", sans-serif; font-weight:700;
     font-size:1.05rem; line-height:1.4; color:var(--text);
+    overflow-wrap:break-word; word-break:break-word;
   }
   .chain-arrow{ color:var(--accent); margin:0 0.3em; font-weight:900; }
   .athlete-step-detail{ margin-top:0.85rem; font-size:0.92rem; line-height:1.55; color:var(--text-muted); }
