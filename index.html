@@ -1488,6 +1488,39 @@
   .mk-case{ grid-template-columns:minmax(0,1fr); }
   .mk-case > *, .mk-sec > *, .mk-week > *{ min-width:0; }
   .mk-week{ grid-template-columns:minmax(0,1fr); }
+
+  /* ===== r82: case study resources + written reasoning ===== */
+  .mk-res{ display:grid; gap:0.85rem; grid-template-columns:minmax(0,1fr); }
+  @media (min-width:760px){ .mk-res{ grid-template-columns:repeat(2, minmax(0,1fr)); } }
+  .mk-res-card{ border:1px solid var(--line); border-radius:12px; padding:1.1rem 1.2rem 1.2rem; background:var(--surface-2); display:grid; gap:0.5rem; align-content:start; }
+  .mk-res-card h4{ margin:0; font-family:"Barlow Condensed", sans-serif; font-weight:700; font-size:1.5rem; line-height:1.1; }
+  .mk-res-card p{ color:var(--text-muted) !important; font-size:0.9rem !important; }
+  .mk-res-actions{ display:flex; flex-wrap:wrap; gap:0.6rem; margin-top:0.35rem; }
+  .mk-btn{
+    font:inherit; font-family:"IBM Plex Mono", monospace; font-size:0.74rem; letter-spacing:0.08em; text-transform:uppercase; text-decoration:none; cursor:pointer;
+    display:inline-flex; align-items:center; border-radius:999px; padding:0.6em 1.2em; border:1px solid var(--accent); background:var(--accent); color:var(--paper); font-weight:700;
+    transition:background .2s ease, color .2s ease;
+  }
+  .mk-btn:hover{ background:var(--accent-strong); border-color:var(--accent-strong); }
+  .mk-btn-ghost{ background:transparent; color:var(--text); border-color:var(--line); font-weight:500; }
+  .mk-btn-ghost:hover{ background:transparent; color:var(--accent); border-color:var(--accent); }
+  .mk-doc{ border:1px solid var(--line); border-radius:12px; background:var(--surface-2); margin-top:0.4rem; }
+  .mk-doc > summary{ list-style:none; cursor:pointer; padding:1rem 1.2rem; display:flex; flex-wrap:wrap; align-items:baseline; justify-content:space-between; gap:0.4rem 1rem; }
+  .mk-doc > summary::-webkit-details-marker{ display:none; }
+  .mk-doc-t{ font-family:"Barlow Condensed", sans-serif; font-weight:700; font-size:1.4rem; line-height:1.1; }
+  .mk-doc-t::after{ content:"+"; margin-left:0.6rem; color:var(--accent); }
+  .mk-doc[open] .mk-doc-t::after{ content:"\2212"; }
+  .mk-doc-s{ font-size:0.66rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--text-muted); }
+  .mk-doc > summary:hover .mk-doc-t{ color:var(--accent); }
+  .mk-doc-body{ padding:0 1.2rem 1.3rem; display:grid; gap:0.85rem; border-top:1px solid var(--line); }
+  .mk-doc-body h4{ margin:1.1rem 0 0; font-family:"IBM Plex Mono", monospace; font-weight:500; font-size:0.7rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--accent); }
+  .mk-doc-body p{ max-width:72ch; font-size:0.95rem; line-height:1.7; }
+  .mk-refs{ list-style:none; margin:0; padding:0; display:grid; gap:0.7rem; }
+  .mk-refs li{ font-size:0.84rem; line-height:1.55; color:var(--text-muted); padding-left:1.4rem; text-indent:-1.4rem; overflow-wrap:anywhere; }
+  .mk-refs a{ color:var(--accent); text-underline-offset:3px; }
+  .mk-ai p{ color:var(--text-muted) !important; }
+  .mk-dec-b + .mk-dec-b{ margin-top:0.7rem; }
+  @media print{ .mk-res{ display:none !important; } .mk-doc{ background:#fff !important; } }
 </style>
 <script type="application/ld+json">
 {
@@ -2175,6 +2208,20 @@ function mkWeekTabs(){
 
 function mkLi(a){ return '<ul class="mk-list">' + a.map(function(t){ return '<li>' + bkaEsc(t) + '</li>'; }).join('') + '</ul>'; }
 
+var MK_DOC = {"c2":["I used Mark’s GP clearance to plan gradual exercise. He has type 2 diabetes, five years without structured training and knee pain descending stairs, but already walks his dog for 15 minutes. I built on that habit rather than assuming he could tolerate vigorous training.","My first decision was between running or sport-style intervals and lower-impact walking and cycling. I chose flat walking and a stationary bike because they allow conversational effort and can be shortened or substituted if knee symptoms increase. Aerobic work progresses from 12 to 25 minutes per gym session. I rejected hard intervals because his goal of playing with his children does not require them. I can adjust exercise intensity; investigating worsening knee pain requires referral. This approach follows guidance to tailor activity to a person’s knee symptoms and goals. (National Institute for Health and Care Excellence [NICE], 2022).","My second decision was between repeating a full-body session three times weekly and varying the emphasis across lower-body, upper-body and functional sessions. I chose varied emphases to make sessions easier to follow and distribute lower-body loading across the week, applying gradual overload while allowing recovery between repeated knee demands. High-box sit-to-stands and shallow leg presses practice controlled knee bending; glute bridges and light hip hinges build hip strength, with an unloaded option if his back becomes uncomfortable. Supported step taps precede low step-ups because stair descent causes pain. Rows and presses cover upper-body movements. I selected these exercises to build strength and function while adapting to his knee symptoms (Goh et al., 2019); diagnosis and clinical management remain with his healthcare team.","I prescribed two sets for most exercises, generally 10–12 repetitions at RPE 4–5, so Mark could learn technique with repetitions in reserve. (American College of Sports Medicine [ACSM], 2009). I increased aerobic duration before adding a third set to the first two lifts in week 4. I considered automatic weekly load increases, but his tolerance is unknown. From week 5, resistance increases by at most 5% only after two tolerated exposures at the top of the rep range with good technique and RPE ≤6. Knee pain that increases, pain elevated for more than two hours, or next-day swelling means reducing range or load and repeating the last tolerated dose instead of progressing.","The case reports BMI 32.4, yet 91 kg and 178 cm calculate to 28.7; I would verify the measurements before tracking BMI. I would record symptoms and exercise tolerance, discuss concerns with my supervisor, and refer persistent pain or glucose concerns to his GP or an accredited exercise physiologist. Medication and glucose management remain with his healthcare team."],"refs":["National Institute for Health and Care Excellence. (2022, October 19). Recommendations | Osteoarthritis in over 16s: diagnosis and management | Guidance | NICE. https://www.nice.org.uk/guidance/ng226/chapter/Recommendations","American College of Sports Medicine. (2009). Progression models in resistance training for healthy adults. Medicine & Science in Sports & Exercise, 41(3), 687–708. https://doi.org/10.1249/MSS.0b013e3181915670","Goh, S.-L., Persson, M. S. M., Stocks, J., Hou, Y., Welton, N. J., Lin, J., Hall, M. C., Doherty, M., & Zhang, W. (2019). Relative efficacy of different exercises for pain, function, performance and quality of life in knee and hip osteoarthritis: Systematic review and network meta-analysis. Sports Medicine, 49(5), 743–761. https://doi.org/10.1007/s40279-019-01082-0"]};
+function mkDocHtml(){
+  var D = MK_DOC;
+  function ps(a){ return a.map(function(t){ return '<p>' + bkaEsc(t) + '</p>'; }).join(''); }
+  function linkify(t){
+    return bkaEsc(t).replace(/(https?:\/\/[^\s<]+)/g, function(u){ return '<a href="' + u + '" target="_blank" rel="noopener noreferrer">' + u + '</a>'; });
+  }
+  return '<details class="mk-doc" id="mk-doc"><summary><span class="mk-doc-t">Read my written clinical reasoning</span><span class="mk-doc-s mono">As submitted · with references</span></summary>' +
+    '<div class="mk-doc-body">' +
+      '<h4>Clinical reasoning narrative</h4>' + ps(D.c2) +
+      '<h4>References</h4><ul class="mk-refs">' + D.refs.map(function(r){ return '<li>' + linkify(r) + '</li>'; }).join('') + '</ul>' +
+    '</div></details>';
+}
+
 function mkHtml(){
   var R = MK.rules;
   var nav = [['mk-1','Client overview'],['mk-2','Assessment'],['mk-3','Program design'],['mk-4','Clinical reasoning'],['mk-5','Key decisions'],['mk-6','Monitoring'],['mk-7','Reflection']]
@@ -2191,11 +2238,23 @@ function mkHtml(){
   var weekTabs = mkWeekTabs();
   var panels = MK.weeks.map(function(W, i){ return mkWeekPanel(i); }).join('');
   var decisions = [
-    ['Build aerobic time before strength volume', 'Cardio climbs from 12 to 20 minutes per gym day by Week 4. Strength stays at two sets until Week 4, when only the first two lifts of each session get a third set.', 'After five years without training, with knee symptoms and a goal of keeping up with his children, aerobic capacity and a repeatable routine were the priority. Strength volume could follow once he had tolerated the early weeks.'],
-    ['Choose knee-friendly, supported options with built-in regressions', 'Bike and flat treadmill walk instead of impact work, a shallow-range leg press, high-box sit-to-stand, and a supported step tap that only becomes a 10 cm step-up in Weeks 4–6 if tolerated. Every exercise lists an easier option.', 'Pain on stair descent pointed to controlled, supported knee loading rather than avoiding the knee altogether. Regressions mean a flare-up changes the exercise, not the whole session.'],
-    ['Make the Week 5 load increase conditional', 'Load only rises on an exercise after two completed exposures with every set at the top of its rep range, good form, RPE of 6 or less and no increase in knee pain or next-day swelling. The step is the smallest available, and no more than 5% of total load.', 'The plan has to stay safe if his symptoms or response differ from what I expect. A rule based on how he responds is better than a fixed number of kilograms.']
+    ['Low-impact aerobic work instead of running or intervals',
+     'Flat walking and a stationary bike, progressing from 12 to 25 minutes per gym session.',
+     'Running or sport-style intervals. I rejected them because his goal of playing with his children does not require hard intervals.',
+     'Walking and cycling allow conversational effort and can be shortened or substituted if his knee symptoms increase. This follows guidance to tailor activity to a person’s knee symptoms and goals (NICE, 2022). I can adjust intensity, but investigating worsening knee pain needs referral.'],
+    ['Varied session emphasis instead of a repeated full-body session',
+     'Three sessions with different emphases: lower-body, upper body with hip hinge, and functional knee capacity.',
+     'The same full-body session three times a week.',
+     'Varied emphases are easier to follow and spread lower-body loading across the week, giving gradual overload with recovery between repeated knee demands. High-box sit-to-stands and shallow leg presses practise controlled knee bending. Glute bridges and light hip hinges build hip strength, with an unloaded option if his back is uncomfortable. Supported step taps come before low step-ups because stair descent causes his pain (Goh et al., 2019).'],
+    ['Aerobic time first, then a conditional load step',
+     'Two sets of mostly 10–12 repetitions at RPE 4–5 so he could learn technique, aerobic duration increased first, a third set added to the first two lifts in Week 4, and a conditional load step from Week 5.',
+     'Automatic weekly load increases. I rejected them because his tolerance is unknown.',
+     'Resistance goes up by at most 5%, and only after two tolerated exposures at the top of the rep range with good technique and RPE of 6 or less (ACSM, 2009). Pain that increases, pain lasting more than two hours, or next-day swelling means reducing range or load and repeating the last tolerated dose.']
   ].map(function(d, i){
-    return '<div class="mk-dec"><div class="mk-dec-n mono">Decision ' + (i + 1) + '</div><h4>' + bkaEsc(d[0]) + '</h4><div class="mk-dec-b"><span class="mk-k mono">What I did</span><p>' + bkaEsc(d[1]) + '</p></div><div class="mk-dec-b"><span class="mk-k mono">Why</span><p>' + bkaEsc(d[2]) + '</p></div></div>';
+    return '<div class="mk-dec"><div class="mk-dec-n mono">Decision ' + (i + 1) + '</div><h4>' + bkaEsc(d[0]) + '</h4>' +
+      '<div class="mk-dec-b"><span class="mk-k mono">What I did</span><p>' + bkaEsc(d[1]) + '</p></div>' +
+      '<div class="mk-dec-b"><span class="mk-k mono">Alternative I considered</span><p>' + bkaEsc(d[2]) + '</p></div>' +
+      '<div class="mk-dec-b"><span class="mk-k mono">Why</span><p>' + bkaEsc(d[3]) + '</p></div></div>';
   }).join('');
   var reg = [['Leg press, shallow range', 'High-box sit-to-stand'], ['Light dumbbell hip hinge (RDL)', 'Unloaded hinge or glute bridge'], ['Flat treadmill walk', 'Stationary bike or shorter bouts'], ['Supported low step-up', 'Low step tap or high-box sit-to-stand'], ['Machine chest press', 'Wall push-up'], ['Band knee straightening (TKE)', 'Quad squeeze, no band']]
     .map(function(r){ return '<tr><th scope="row">' + bkaEsc(r[0]) + '</th><td>' + bkaEsc(r[1]) + '</td></tr>'; }).join('');
@@ -2220,6 +2279,10 @@ function mkHtml(){
       '<div class="mk-fact"><span class="mk-fact-v">3 + 4</span><span class="mk-fact-l mono">gym days + walk or play days</span></div>' +
       '<div class="mk-fact"><span class="mk-fact-v">96 → 175</span><span class="mk-fact-l mono">planned aerobic min per week</span></div>' +
       '<div class="mk-fact"><span class="mk-fact-v">RPE 4–5 → 6–7</span><span class="mk-fact-l mono">strength effort</span></div>' +
+    '</div>' +
+    '<div class="mk-res">' +
+      '<div class="mk-res-card"><span class="mk-k mono">The program</span><h4>View 6-week training program</h4><p>Choose any week, session or exercise below, exactly as I submitted it.</p><div class="mk-res-actions"><button type="button" class="mk-btn" data-mk-jump="mk-3">View the program</button><a class="mk-btn mk-btn-ghost" href="Mark_6_Week_Training_Program.xlsx" download="Mark_6_Week_Training_Program.xlsx" data-mk-xlsx>Download Excel</a></div></div>' +
+      '<div class="mk-res-card"><span class="mk-k mono">The reasoning</span><h4>Read clinical reasoning</h4><p>My written justification for the exercise prescription, with references.</p><div class="mk-res-actions"><button type="button" class="mk-btn" data-mk-doc="1">Read it here</button></div></div>' +
     '</div>' +
     '<div class="mk-nav" role="navigation" aria-label="Case study sections">' + nav + '</div>' +
 
@@ -2252,6 +2315,7 @@ function mkHtml(){
         '<div class="mk-card"><span class="mk-k mono">Alternatives built into the plan</span><div class="mk-table-wrap"><table class="mk-table mk-table-text mk-mini"><thead><tr><th scope="col">If this provokes symptoms</th><th scope="col">Swap to</th></tr></thead><tbody>' + reg + '</tbody></table></div></div>' +
         '<div class="mk-card"><span class="mk-k mono">Managing uncertainty</span>' + mkLi(['I flagged the BMI discrepancy and made the plan work either way.', 'Load progression depends on his response, not on the calendar.', 'Plan B rules say exactly what to change when the knee or back reacts.', 'Glucose, medication and structural questions go to the GP, AEP or physiotherapist.']) + '</div>' +
       '</div>' +
+      mkDocHtml() +
     '</section>' +
 
     '<section class="mk-sec" id="mk-5"><h3><span class="mk-sec-n mono">5</span>Key programming decisions</h3>' +
@@ -2271,11 +2335,11 @@ function mkHtml(){
 
     '<section class="mk-sec" id="mk-7"><h3><span class="mk-sec-n mono">7</span>Professional reflection</h3>' +
       '<div class="mk-cols">' +
-        '<div class="mk-card"><span class="mk-k mono">What this assessment taught me</span>' + mkLi(['Prescription is as much about risk management as exercise choice. Screening, scope of practice and stop or refer rules shaped the plan as much as the exercises did.', 'Case information needs checking. Catching the BMI mismatch showed me to flag discrepancies and make the plan robust to them.', 'Progression can be conditional. Tying the Week 5 load step to his response felt safer and more honest than a fixed increase.']) + '</div>' +
-        '<div class="mk-card"><span class="mk-k mono">What I would improve with more experience</span>' + mkLi(['Set baseline targets from measured data, such as a repeatable 6-minute walk or 30-second chair stand, so progress is judged against his own numbers.', 'Work with an Accredited Exercise Physiologist and his GP on session timing around glucose and medication, rather than relying on general guidance.', 'Add adherence supports, because a routine that survives a busy work and family week matters as much as the program itself.']) + '</div>' +
+        '<div class="mk-card"><span class="mk-k mono">What this assessment taught me</span>' + mkLi(['A conservative, consistent progression suited someone returning after about five years without training and with knee and back symptoms: aerobic time first, then resistance volume, then small load increases once tolerance criteria were met.', 'Scope of practice shapes the plan. Abnormal glucose or clinical findings may need a GP or accredited exercise physiologist, while my role is exercise prescription, monitoring and progression.', 'Case data needs checking. The supplied BMI did not match the height and weight, so I would verify the measurements before tracking it.']) + '</div>' +
+        '<div class="mk-card"><span class="mk-k mono">What I would improve with more experience</span>' + mkLi(['Set baseline targets from measured data, such as a repeatable 6-minute walk or 30-second chair stand, so progress is judged against his own numbers.', 'Work with an accredited exercise physiologist and his GP on session timing around glucose and medication, rather than relying on general guidance.', 'Add adherence supports, because a routine that survives a busy work and family week matters as much as the program itself.']) + '</div>' +
       '</div>' +
     '</section>' +
-    '<p class="mk-foot mono">University coursework with a simulated client. Educational example only, not medical advice.</p>' +
+    '<p class="mk-foot mono">University coursework with a simulated client. Educational example only, not medical advice. Original assessment text is shown as submitted.</p>' +
   '</div>';
 }
 
@@ -2301,9 +2365,21 @@ function mkInject(){
   if (!window.__mkClicks) {
     window.__mkClicks = true;
     document.addEventListener('click', function(e){
-      var t = e.target.closest && e.target.closest('[data-mk-week], [data-mk-sess], [data-mk-ex], [data-mk-jump]');
+      var t = e.target.closest && e.target.closest('[data-mk-week], [data-mk-sess], [data-mk-ex], [data-mk-jump], [data-mk-doc], [data-mk-xlsx]');
       if (!t) return;
       var root = t.closest('.mk-case'); if (!root) return;
+      if (t.hasAttribute('data-mk-xlsx')) {
+        if (typeof downloadsCap !== 'undefined' && downloadsCap && typeof MK_XLSX_B64 !== 'undefined') {
+          e.preventDefault();
+          downloadsCap.save({ filename:'Mark_6_Week_Training_Program.xlsx', data: base64ToBlob(MK_XLSX_B64, 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet') }).catch(function(err){ if (err && err.code !== 'declined' && typeof toast === 'function') toast('Could not start the download. Please try again.'); });
+        }
+        return;
+      }
+      if (t.hasAttribute('data-mk-doc')) {
+        var dd = root.querySelector('#mk-doc');
+        if (dd) { dd.open = true; var rm2 = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches; dd.scrollIntoView({ behavior: rm2 ? 'auto' : 'smooth', block:'start' }); }
+        return;
+      }
       if (t.hasAttribute('data-mk-week')) { window.__mk.w = parseInt(t.getAttribute('data-mk-week'), 10); mkSync(root); return; }
       if (t.hasAttribute('data-mk-sess')) { window.__mk.s = parseInt(t.getAttribute('data-mk-sess'), 10); mkSync(root); return; }
       if (t.hasAttribute('data-mk-jump')) {
