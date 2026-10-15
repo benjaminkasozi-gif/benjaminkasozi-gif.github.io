@@ -2828,7 +2828,7 @@ var BK_BREAKS = {
 };
 function bkBreakHtml(kind, panel){
   var b = BK_BREAKS[kind];
-  var src = (typeof BK_BREAK_DATA !== 'undefined' && BK_BREAK_DATA[kind]) || ('assets/break-' + kind + '.jpg');
+  var src = (typeof BK_BREAK_DATA !== 'undefined' && BK_BREAK_DATA[kind]) || ('break-' + kind + '.jpg');
   return '<figure class="photo-break' + (panel ? ' photo-break--panel' : ' reveal') + '" data-break="' + kind + '">' +
     '<img src="' + src + '" alt="' + bkaEsc(b.alt) + '" width="2000" height="900" loading="lazy" decoding="async" style="object-position:' + b.pos + '">' +
     '<figcaption class="photo-break-cap mono">Photo: <a href="' + b.url + '" target="_blank" rel="noopener noreferrer">' + bkaEsc(b.who) + ' / Unsplash</a></figcaption></figure>';
