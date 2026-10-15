@@ -1891,6 +1891,55 @@
       radial-gradient(120% 90% at 50% 50%, transparent 60%, rgba(0,0,0,0.22) 100%); }
   @media (prefers-reduced-motion: reduce){ .photo-break img{ transform:none; will-change:auto; } }
   @media print{ .photo-break{ display:none !important; } }
+
+  /* ===== r96: photos on project cards ===== */
+  .project-visual{ position:relative; isolation:isolate; }
+  .project-card[data-pj] .project-visual::after{
+    content:""; position:absolute; inset:0; z-index:-1; pointer-events:none;
+    background:linear-gradient(to bottom, rgba(5,8,7,0.46), rgba(5,8,7,0.72)), var(--pj-photo) center / cover no-repeat;
+    transform:scale(1); transition:transform .7s cubic-bezier(.2,.7,.2,1);
+  }
+  .project-card[data-pj]:hover .project-visual::after, .project-card[data-pj]:focus-within .project-visual::after{ transform:scale(1.02); }
+  .project-card[data-pj] .project-visual svg{ filter:drop-shadow(0 2px 10px rgba(0,0,0,0.55)); }
+  @media (min-width:860px){
+    .projects-grid .project-card.featured[data-pj] .project-visual::after{
+      background:linear-gradient(to bottom, rgba(5,8,7,0.34) 0%, rgba(5,8,7,0.66) 55%, var(--card) 96%), var(--pj-photo) center 30% / cover no-repeat;
+    }
+    .projects-grid .project-card:not(.featured)[data-pj] .project-visual::after{
+      background:linear-gradient(to right, rgba(5,8,7,0.30), rgba(5,8,7,0.66)), var(--pj-photo) center / cover no-repeat;
+    }
+    .projects-grid .project-card:not(.featured)[data-pj] .project-visual svg{ opacity:0.82; }
+  }
+  .photo-credits{ margin-top:1.25rem; max-width:80ch; font-size:0.64rem; line-height:1.8; letter-spacing:0.06em; text-transform:uppercase; color:var(--text-muted); }
+  .photo-credits a{ color:inherit; border-bottom:1px solid color-mix(in srgb, var(--text-muted) 45%, transparent); text-decoration:none; }
+  .photo-credits a:hover{ color:var(--text); }
+  @media print{ .project-card[data-pj] .project-visual::after{ display:none; } }
+
+  /* photos lead, charts sit lower and quieter */
+  .project-card[data-pj] .project-visual::after{ background:linear-gradient(to bottom, rgba(5,8,7,0.2), rgba(5,8,7,0.5)), var(--pj-photo) center / cover no-repeat; }
+  .project-card[data-pj] .project-visual svg{ opacity:0.62; }
+  @media (min-width:860px){
+    .projects-grid .project-card.featured[data-pj] .project-visual{ align-items:flex-end; padding-bottom:10.5rem; }
+    .projects-grid .project-card.featured[data-pj] .project-visual svg{ max-width:74%; margin:0 auto; opacity:0.9; }
+    .projects-grid .project-card.featured[data-pj] .project-visual::after{
+      background:linear-gradient(to bottom, rgba(5,8,7,0.12) 0%, rgba(5,8,7,0.38) 48%, rgba(5,8,7,0.82) 78%, var(--card) 97%), var(--pj-photo) center 30% / cover no-repeat;
+    }
+    .projects-grid .project-card.featured[data-pj] .project-visual::before{ -webkit-text-stroke-color:rgba(255,255,255,0.22); }
+    .projects-grid .project-card:not(.featured)[data-pj] .project-visual svg{ display:none; }
+    .projects-grid .project-card:not(.featured)[data-pj] .project-visual::after{
+      background:linear-gradient(to right, rgba(5,8,7,0.12), rgba(5,8,7,0.5)), var(--pj-photo) center / cover no-repeat;
+    }
+  }
+
+  @media (min-width:860px){
+    .projects-grid .project-card.featured[data-pj] .project-visual svg{ display:none; }
+    .projects-grid .project-card.featured[data-pj] .project-visual::after{
+      background:linear-gradient(to bottom, rgba(5,8,7,0.10) 0%, rgba(5,8,7,0.22) 45%, rgba(5,8,7,0.78) 76%, var(--card) 96%), var(--pj-photo) center 32% / cover no-repeat;
+    }
+    .projects-grid .project-card.featured .project-metric-line{ display:block; margin-top:0.9rem; font-size:0.86rem; }
+  }
+
+  @media (max-width:859px){ .project-card[data-pj] .project-visual svg{ display:none; } .project-card[data-pj] .project-visual{ min-height:210px; } }
 </style>
 <script type="application/ld+json">
 {
@@ -2872,6 +2921,42 @@ function bkBreaks(){
   }
 }
 
+
+/* ===== r96: project card photos + footer credits ===== */
+var BK_PJ = {
+  rugby:      { match:/rugby/i,      who:'Davide Buttani', url:'https://unsplash.com/photos/a-rugby-ball-sitting-on-top-of-a-lush-green-field-UKWHDxGuQ0k' },
+  mark:       { match:/Mark/,        who:'Stefan Vibes',   url:'https://unsplash.com/photos/stationary-exercise-bike-console-in-gym-lImX6Uj48lc' },
+  soccer:     { match:/soccer/i,     who:'Jonathan Ward',  url:'https://unsplash.com/photos/person-in-black-pants-wearing-white-and-red-nike-soccer-cleats-3dV5K_R782o' },
+  basketball: { match:/basketball/i, who:'Tom Briskey',    url:'https://unsplash.com/photos/basketball-flying-toward-hoop-in-sky-AddAnDkkovM' }
+};
+function bkProjectPhotos(){
+  document.querySelectorAll('.project-card').forEach(function(card){
+    var t = card.querySelector('.project-title'); if (!t || card.getAttribute('data-pj')) return;
+    var title = t.textContent;
+    for (var k in BK_PJ) {
+      if (BK_PJ[k].match.test(title)) {
+        var src = (typeof BK_PJ_DATA !== 'undefined' && BK_PJ_DATA[k]) || ('project-' + k + '.jpg');
+        card.style.setProperty('--pj-photo', 'url("' + src + '")');
+        card.setAttribute('data-pj', k);
+        break;
+      }
+    }
+  });
+}
+function bkCredits(){
+  var foot = document.querySelector('.site-foot .wrap');
+  if (!foot || foot.querySelector('.photo-credits')) return;
+  var all = [];
+  for (var k in BK_PJ) all.push(BK_PJ[k]);
+  for (var b in BK_BREAKS) all.push({ who:BK_BREAKS[b].who, url:BK_BREAKS[b].url });
+  var seen = {}, links = [];
+  all.forEach(function(p){ if (seen[p.who]) return; seen[p.who] = 1; links.push('<a href="' + p.url + '" target="_blank" rel="noopener noreferrer">' + bkaEsc(p.who) + '</a>'); });
+  var p = document.createElement('p');
+  p.className = 'photo-credits mono';
+  p.innerHTML = 'Stock photography via Unsplash: ' + links.join(', ') + '.';
+  foot.appendChild(p);
+}
+
 function bkInitExtras(){
   bkaInit();
   bklInit();
@@ -2883,6 +2968,8 @@ function bkInitExtras(){
   bkNavInk();
   bkTiles();
   bkBreaks();
+  bkProjectPhotos();
+  bkCredits();
   var m = document.querySelector('#analytics .an-main');
   if (m) window.__bkaW = m.clientWidth;
 }
