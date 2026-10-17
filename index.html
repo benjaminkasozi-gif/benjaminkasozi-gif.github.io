@@ -2154,6 +2154,25 @@
   /* ===== r121: own football photo ===== */
   .photo-break--match{ aspect-ratio:3/2; width:min(900px, calc(100% - 2 * clamp(1.25rem,4vw,2.5rem))); }
   .photo-break--own img{ filter:none; }
+  /* ===== r130: case-study covers + cinematic banners ===== */
+  .project-card[data-pc] .project-metric-line, .project-card[data-pc] .project-teaser, .project-card[data-pc] .project-radar, .project-card[data-pc] .project-tags{ display:none !important; }
+  .pc-stats{ display:grid; grid-auto-flow:column; grid-auto-columns:minmax(0,1fr); gap:0.25rem 0.9rem; margin-top:1rem; padding-top:0.8rem; border-top:1px solid var(--line); }
+  .pc-stat{ display:grid; gap:0.2rem; min-width:0; align-content:start; }
+  .pc-stat b{ font-family:"Barlow Condensed", sans-serif; font-weight:800; font-size:1.4rem; line-height:1; color:var(--accent); white-space:nowrap; }
+  .pc-stat span{ font-size:0.58rem; letter-spacing:0.1em; text-transform:uppercase; line-height:1.35; color:var(--text-muted); overflow-wrap:anywhere; }
+  .project-card:not(.featured) .pc-stat b{ font-size:1.15rem; }
+  @media (max-width:420px){ .pc-stats{ grid-auto-flow:row; grid-template-columns:repeat(2, minmax(0,1fr)); } }
+
+  .cine{ position:relative; isolation:isolate; overflow:hidden; background:#050807; color:#F8FBF7; display:flex; align-items:center; min-height:clamp(380px, 58vh, 580px); padding-block:clamp(3.5rem, 9vw, 6rem); margin-block:clamp(2.5rem, 6vw, 4rem); }
+  .cine-bg{ position:absolute; inset:0; z-index:-2; background-size:cover; background-position:center; filter:saturate(0.7) brightness(0.62) contrast(1.08); transform:scale(1.04); }
+  .cine::before{ content:""; position:absolute; inset:0; z-index:-1; background:linear-gradient(90deg, rgba(5,8,7,0.88) 0%, rgba(5,8,7,0.55) 55%, rgba(5,8,7,0.3) 100%), linear-gradient(to bottom, rgba(5,8,7,0.9) 0, transparent 20%, transparent 80%, rgba(5,8,7,0.9) 100%); }
+  .cine-in{ width:100%; }
+  .cine-eyebrow{ font-size:0.72rem; letter-spacing:0.22em; text-transform:uppercase; color:#B7FF32; margin-bottom:1.1rem; }
+  .cine-h{ margin:0; font-family:"Barlow Condensed", sans-serif; font-weight:800; text-transform:uppercase; font-size:clamp(3rem, 11vw, 8rem); line-height:0.9; letter-spacing:-0.005em; color:#F8FBF7; text-wrap:balance; }
+  .cine-h span{ display:block; }
+  .cine-h span:nth-child(2){ color:transparent; -webkit-text-stroke:1.5px #F8FBF7; }
+  .cine-p{ margin:1.4rem 0 0; max-width:34ch; font-size:clamp(1rem, 1.6vw, 1.25rem); line-height:1.5; color:rgba(248,251,247,0.82); }
+  @media print{ .cine{ display:none !important; } }
 </style>
 <script type="application/ld+json">
 {
@@ -3990,6 +4009,51 @@ function bkOwnMatch(){
   old.parentNode.replaceChild(w.firstChild, old);
 }
 
+
+/* ===== r130: case-study covers + cinematic statement banners ===== */
+BK_BREAKS.cine = { who:'Austris Augusts', url:'https://unsplash.com/photos/running-track-with-numbered-lanes-52p1K0d0euM' };
+var BK_COVER = {
+  rugby: { k:'Case study 01 / Performance testing', s:[['3.32 s','20 m sprint'], ['34.7 cm','CMJ'], ['5:37','Bronco'], ['1.71× BM','Trap-bar']] },
+  mark: { k:'Case study 02 / Exercise prescription', s:[['6 wks','Duration'], ['96→175','Min per week'], ['RPE 4–7','Intensity']] },
+  soccer: { k:'Case study 03 / Return to performance', s:[['8 wks','Program'], ['Hamstring','Return focus']] },
+  basketball: { k:'Case study 04 / Tournament preparation', s:[['12 wks','Periodised'], ['3 phases','Build, intensify, taper']] }
+};
+function bkProjectCovers(){
+  document.querySelectorAll('.project-card[data-pj]').forEach(function(card){
+    var c = BK_COVER[card.getAttribute('data-pj')], body = card.querySelector('.project-body');
+    if (!c || !body || card.querySelector('.pc-stats')) return;
+    card.setAttribute('data-pc', '1');
+    var kick = body.querySelector('.project-kicker');
+    if (!kick) { kick = document.createElement('div'); kick.className = 'project-kicker mono'; body.insertBefore(kick, body.firstChild); }
+    kick.textContent = c.k;
+    var st = document.createElement('div'); st.className = 'pc-stats'; st.setAttribute('role', 'list');
+    st.innerHTML = c.s.map(function(x){ return '<div class="pc-stat" role="listitem"><b>' + bkaEsc(x[0]) + '</b><span class="mono">' + bkaEsc(x[1]) + '</span></div>'; }).join('');
+    var meta = body.querySelector('.project-meta');
+    (meta || body.querySelector('.project-title')).insertAdjacentElement('afterend', st);
+    var tg = body.querySelector('.project-toggle');
+    if (tg) { var host = tg.querySelector('.project-toggle-label') || tg; [].forEach.call(host.childNodes, function(n){ if (n.nodeType === 3 && /Explore case study/.test(n.textContent)) n.textContent = n.textContent.replace('Explore case study', 'Read the case study'); }); }
+  });
+}
+function bkCineHtml(id, img, eyebrow, lines, sub){
+  return '<section class="cine" id="' + id + '" aria-label="' + bkaEsc(eyebrow) + '"><div class="cine-bg" style="background-image:url(\'' + img + '\')"></div>' +
+    '<div class="wrap cine-in reveal"><div class="cine-eyebrow mono">' + bkaEsc(eyebrow) + '</div>' +
+    '<h2 class="cine-h">' + lines.map(function(l){ return '<span>' + bkaEsc(l) + '</span>'; }).join('') + '</h2>' +
+    '<p class="cine-p">' + bkaEsc(sub) + '</p></div></section>';
+}
+function bkCinema(){
+  var stock = function(k){ return (typeof BK_BREAK_DATA !== 'undefined' && BK_BREAK_DATA[k]) || ('break-' + k + '.jpg'); };
+  var put = function(id, beforeSel, html){
+    if (document.getElementById(id)) return;
+    var a = document.querySelector(beforeSel); if (!a) return;
+    var w = document.createElement('div'); w.innerHTML = html;
+    a.parentNode.insertBefore(w.firstChild, a);
+  };
+  put('cine-approach', '#page-home #roadmap', bkCineHtml('cine-approach', stock('football'), 'The BK approach / 2026', ['Assess.', 'Interpret.', 'Perform.'], 'Turning athlete data into practical performance decisions.'));
+  put('cine-evidence', '#page-projects #analytics', bkCineHtml('cine-evidence', stock('lanes'), 'Applied work / 2026', ['Every result.', 'Needs a decision.'], 'Case studies where each test result leads to a training decision.'));
+  var sp = document.querySelector('#page-projects .photo-break[data-break="sprint"]');
+  if (sp) sp.remove();
+}
+
 function bkInitExtras(){
   bkPages();
   bkTestingPage();
@@ -4007,7 +4071,9 @@ function bkInitExtras(){
   bkTiles();
   bkBreaks();
   bkOwnMatch();
+  bkCinema();
   bkProjectPhotos();
+  bkProjectCovers();
   bkCredits();
   bkRevealAll();
   var m = document.querySelector('#analytics .an-main');
