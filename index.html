@@ -2240,6 +2240,163 @@
   .an-svg-wrap .dot{ fill:var(--ice); stroke:var(--surface); stroke-width:2; }
   .an-svg-wrap .dot.base{ fill:var(--surface); stroke:var(--ice); }
   .an-svg-wrap .dot.last{ fill:var(--accent); stroke:var(--surface); stroke-width:3; }
+  /* ===== r160: planned vs completed ===== */
+  .an-pc{ margin-top:1.75rem; padding-top:1.5rem; border-top:1px solid var(--line); display:grid; grid-template-columns:minmax(0,1fr); gap:0.7rem; }
+  .an-pc > *{ min-width:0; }
+  .an-pc-title{ font-family:"Barlow Condensed", sans-serif; font-weight:800; text-transform:uppercase; font-size:clamp(1.3rem, 3vw, 1.7rem); line-height:1.1; text-wrap:balance; }
+  .an-pc-legend{ display:flex; flex-wrap:wrap; gap:0.4rem 1.2rem; align-items:center; font-size:0.68rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--text-muted); }
+  .an-pc-legend span{ display:inline-flex; align-items:center; gap:0.45rem; }
+  .an-pc-legend .k{ display:inline-block; width:14px; height:10px; border-radius:2px; }
+  .an-pc-legend .k.plan{ border:1.5px dashed var(--ice); background:color-mix(in srgb, var(--ice) 16%, transparent); }
+  .an-pc-legend .k.comp{ background:var(--accent); }
+  .an-pc-unit{ margin-left:auto; }
+  .an-svg-wrap .xb.plan{ fill:color-mix(in srgb, var(--ice) 16%, transparent); stroke:var(--ice); stroke-width:1.5; stroke-dasharray:4 3; }
+  .an-svg-wrap .xb.comp{ fill:var(--accent); }
+  .an-svg-wrap .xb.comp.over{ fill:var(--warn); }
+  .an-svg-wrap .val.over{ fill:var(--warn); }
+  .an-pc-note{ margin:0.4rem 0 0; max-width:70ch; font-size:0.98rem; line-height:1.6; }
+  .an-pc-method{ margin:0; max-width:70ch; font-size:0.85rem; line-height:1.6; color:var(--text-muted); }
+  .an-pc-method b{ color:var(--text); font-weight:600; }
+  .an-pc-inputs{ border:1px solid var(--line); border-radius:10px; background:var(--surface-2); }
+  .an-pc-inputs summary{ cursor:pointer; padding:0.7rem 0.9rem; font-size:0.68rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--text-muted); list-style:none; }
+  .an-pc-inputs summary::-webkit-details-marker{ display:none; }
+  .an-pc-inputs summary:focus-visible{ outline:2px solid var(--accent); outline-offset:2px; }
+  .an-pc-tablewrap{ overflow-x:auto; padding:0 0.9rem 0.9rem; }
+  .an-pc-tablewrap table{ width:100%; border-collapse:collapse; font-size:0.8rem; font-variant-numeric:tabular-nums; min-width:520px; }
+  .an-pc-tablewrap th, .an-pc-tablewrap td{ text-align:left; padding:0.4rem 0.6rem 0.4rem 0; border-bottom:1px solid var(--line); white-space:nowrap; }
+  .an-pc-tablewrap thead th{ font-family:"IBM Plex Mono", monospace; font-size:0.62rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--text-muted); font-weight:500; }
+  /* ===== r170: case-study visuals, tooltips, card states ===== */
+  #bk-tip{ position:fixed; z-index:200; max-width:min(280px, calc(100vw - 16px)); padding:0.6rem 0.75rem; border:1px solid var(--line); border-radius:10px; background:var(--card, var(--surface)); color:var(--text); box-shadow:0 14px 30px rgba(0,0,0,0.38); font-size:0.8rem; line-height:1.45; pointer-events:none; display:grid; gap:0.25rem; }
+  #bk-tip[hidden]{ display:none; }
+  #bk-tip b{ font-family:"Barlow Condensed", sans-serif; font-size:1rem; font-weight:700; letter-spacing:0.01em; }
+  #bk-tip span{ color:var(--text-muted); }
+
+  .vz{ margin:1.6rem 0; padding:1.1rem 1.1rem 1rem; border:1px solid var(--line); border-radius:14px; background:var(--surface-2); display:grid; grid-template-columns:minmax(0,1fr); gap:0.8rem; }
+  .vz > *{ min-width:0; }
+  .vz-head{ display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:0.4rem 1rem; }
+  .vz-t{ font-family:"Barlow Condensed", sans-serif; font-weight:800; text-transform:uppercase; font-size:1.2rem; line-height:1.1; }
+  .vz-tag{ font-size:0.62rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--warn); border:1px solid color-mix(in srgb, var(--warn) 55%, transparent); border-radius:999px; padding:0.2rem 0.6rem; white-space:nowrap; }
+  .vz-sub{ margin:0; font-size:0.86rem; line-height:1.5; color:var(--text-muted); }
+  .vz-cap{ font-size:0.72rem; line-height:1.5; color:var(--text-muted); font-family:"IBM Plex Mono", monospace; }
+  .vz-detail{ border-top:1px solid var(--line); padding-top:0.8rem; display:grid; gap:0.35rem; min-height:5.5rem; }
+  .vz-dt{ font-family:"Barlow Condensed", sans-serif; font-weight:700; font-size:1.15rem; display:flex; flex-wrap:wrap; gap:0.5rem; align-items:center; }
+  .vz-detail p{ margin:0; font-size:0.9rem; line-height:1.55; }
+  .vz-look{ color:var(--text-muted); }
+  .vz-look .mono{ display:block; font-size:0.62rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--ice); margin-bottom:0.1rem; }
+  .vz button:focus-visible, .vz [tabindex]:focus-visible{ outline:2px solid var(--accent); outline-offset:2px; }
+
+  /* CMJ */
+  .vz-svgwrap svg{ display:block; width:100%; height:auto; overflow:visible; }
+  .vz-band{ cursor:pointer; outline:none; }
+  .vz-band .vzb-bg{ fill:color-mix(in srgb, var(--ice) 5%, transparent); transition:fill .25s ease; }
+  .vz-band.alt .vzb-bg{ fill:color-mix(in srgb, var(--ice) 11%, transparent); }
+  .vz-band:hover .vzb-bg, .vz-band:focus-visible .vzb-bg{ fill:color-mix(in srgb, var(--ice) 22%, transparent); }
+  .vz-band.is-on .vzb-bg{ fill:color-mix(in srgb, var(--accent) 16%, transparent); }
+  .vz-band:focus-visible .vzb-bg{ stroke:var(--accent); stroke-width:2; }
+  .vzb-l{ fill:var(--text-muted); font-family:"IBM Plex Mono", monospace; font-size:10.5px; letter-spacing:0.06em; pointer-events:none; }
+  .vz-band.is-on .vzb-l{ fill:var(--text); font-weight:600; }
+  .vz-curve{ fill:none; stroke:var(--text); stroke-width:2.6; stroke-linecap:round; stroke-linejoin:round; pointer-events:none; }
+  .vz-bw, .vz-zero{ stroke:var(--text-muted); stroke-width:1.2; stroke-dasharray:3 4; opacity:0.7; pointer-events:none; }
+  .vz-zero{ stroke-dasharray:none; opacity:0.4; }
+  .vz-bwl{ fill:var(--text-muted); font-family:"IBM Plex Mono", monospace; font-size:10px; pointer-events:none; }
+  .vz-ann{ fill:var(--text); font-family:"IBM Plex Mono", monospace; font-size:10.5px; pointer-events:none; }
+  .vz-dot{ fill:var(--accent); stroke:var(--surface-2); stroke-width:2; pointer-events:none; }
+  .vz-chips, .vz-seg{ display:flex; flex-wrap:wrap; gap:0.4rem; }
+  .vz-chip{ display:inline-flex; align-items:center; gap:0.45rem; padding:0.42rem 0.8rem; border:1px solid var(--line); border-radius:999px; background:transparent; color:var(--text); font:inherit; font-size:0.82rem; cursor:pointer; transition:border-color .2s, background .2s; }
+  .vz-chip .mono{ font-size:0.66rem; color:var(--text-muted); }
+  .vz-chip:hover{ border-color:var(--ice); }
+  .vz-chip[aria-pressed="true"]{ border-color:var(--accent); color:var(--accent); background:color-mix(in srgb, var(--accent) 9%, transparent); }
+  @media (max-width:560px){ .vz-cmj .vzb-l, .vz-cmj .vz-ann{ display:none; } }
+
+  /* segmented controls (phases) */
+  .vz-seg{ gap:0; border:1px solid var(--line); border-radius:12px; overflow:hidden; width:fit-content; max-width:100%; }
+  .vz-seg-b{ display:grid; gap:0.05rem; padding:0.5rem 0.95rem; background:transparent; color:var(--text); border:none; border-left:1px solid var(--line); font:inherit; font-size:0.9rem; font-weight:600; cursor:pointer; text-align:left; transition:background .2s, color .2s; }
+  .vz-seg-b:first-child{ border-left:none; }
+  .vz-seg-b em{ font-style:normal; font-size:0.6rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--text-muted); font-weight:400; }
+  .vz-seg-b:hover{ background:color-mix(in srgb, var(--ice) 10%, transparent); }
+  .vz-seg-b[aria-pressed="true"]{ background:color-mix(in srgb, var(--accent) 12%, transparent); color:var(--accent); }
+
+  /* rugby tiles */
+  .case-drawer .metric-dashboard[data-vz-on] .metric-hover{ display:none; }
+  .case-drawer .metric-dashboard[data-vz-on] .metric-panel:hover .metric-face, .case-drawer .metric-dashboard[data-vz-on] .metric-panel:focus-visible .metric-face{ opacity:1; transform:none; }
+  .metric-panel.mt{ position:relative; cursor:help; transition:background .25s ease; }
+  .metric-panel.mt::after{ content:""; position:absolute; left:0; right:0; bottom:0; height:3px; background:var(--ice); opacity:0.55; transition:opacity .25s, height .25s; }
+  .metric-panel.mt.dev::after{ background:var(--warn); opacity:0.9; }
+  .metric-panel.mt.keep::after{ background:var(--accent); opacity:0.9; }
+  .metric-panel.mt:hover, .metric-panel.mt:focus-visible{ background:color-mix(in srgb, var(--ice) 8%, transparent); }
+  .metric-panel.mt:hover::after, .metric-panel.mt:focus-visible::after{ height:5px; opacity:1; }
+  .mt-tag{ display:inline-block; margin-bottom:0.45rem; padding:0.14rem 0.55rem; border-radius:999px; font-size:0.58rem; letter-spacing:0.12em; text-transform:uppercase; border:1px solid currentColor; }
+  .metric-panel.keep .mt-tag{ color:var(--accent); }
+  .metric-panel.dev .mt-tag{ color:var(--warn); background:color-mix(in srgb, var(--warn) 12%, transparent); }
+  .mt-next{ margin-top:0.5rem; font-size:0.72rem; line-height:1.35; color:var(--text-muted); }
+  .mt-legend{ display:flex; flex-wrap:wrap; gap:0.4rem 1.1rem; margin-top:0.7rem; font-size:0.62rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--text-muted); }
+  .mt-legend span:not(.mt-hint)::before{ content:""; display:inline-block; width:10px; height:3px; margin-right:0.45rem; vertical-align:middle; background:var(--accent); }
+  .mt-legend .dev::before{ background:var(--warn) !important; }
+  .mt-hint{ margin-left:auto; }
+
+  /* Mark progression */
+  .mkp{ display:grid; grid-template-columns:repeat(6, minmax(0,1fr)); gap:0.45rem; align-items:stretch; }
+  .mkp-col{ display:grid; grid-template-rows:auto 150px auto auto auto; gap:0.35rem; justify-items:center; padding:0.4rem 0.15rem 0.5rem; border:1px solid transparent; border-radius:10px; background:transparent; color:var(--text); font:inherit; cursor:pointer; min-width:0; transition:background .25s, border-color .25s; }
+  .mkp-col:hover{ background:color-mix(in srgb, var(--ice) 8%, transparent); }
+  .mkp-col[aria-pressed="true"]{ border-color:var(--accent); background:color-mix(in srgb, var(--accent) 7%, transparent); }
+  .mkp-val{ font-family:"Barlow Condensed", sans-serif; font-weight:800; font-size:1.25rem; line-height:1; color:var(--accent); }
+  .mkp-track{ position:relative; width:100%; max-width:46px; height:150px; display:flex; align-items:flex-end; }
+  .mkp-bar{ display:block; width:100%; border-radius:6px 6px 2px 2px; background:color-mix(in srgb, var(--accent) var(--lv), color-mix(in srgb, var(--ice) 65%, transparent)); }
+  @media (prefers-reduced-motion: no-preference){ .vz-mk .mkp-bar{ animation:vzGrow .8s cubic-bezier(.2,.7,.2,1) both; transform-origin:bottom; } .vz-mk .mkp-col:nth-child(2) .mkp-bar{ animation-delay:.05s; } .vz-mk .mkp-col:nth-child(3) .mkp-bar{ animation-delay:.1s; } .vz-mk .mkp-col:nth-child(4) .mkp-bar{ animation-delay:.15s; } .vz-mk .mkp-col:nth-child(5) .mkp-bar{ animation-delay:.2s; } .vz-mk .mkp-col:nth-child(6) .mkp-bar{ animation-delay:.25s; } }
+  @keyframes vzGrow{ from{ transform:scaleY(0); } }
+  .mkp-w{ font-size:0.7rem; letter-spacing:0.08em; color:var(--text-muted); }
+  .mkp-rpe{ font-size:0.58rem; letter-spacing:0.04em; color:var(--text); border:1px solid var(--line); border-radius:6px; padding:0.1rem 0.3rem; white-space:nowrap; }
+  .mkp-ms{ font-size:0.54rem; letter-spacing:0.04em; text-transform:uppercase; color:var(--warn); min-height:1.3em; text-align:center; line-height:1.25; white-space:nowrap; }
+  @media (max-width:520px){ .mkp-col{ grid-template-rows:auto 120px auto auto auto; } .mkp-track{ height:120px; } .mkp-rpe{ font-size:0.52rem; padding:0.1rem 0.2rem; } }
+
+  /* soccer microcycle */
+  .mc-bars{ display:grid; grid-template-columns:repeat(7, minmax(0,1fr)); gap:0.4rem; align-items:end; }
+  .mc-col{ position:relative; display:grid; grid-template-rows:140px auto; gap:0.4rem; justify-items:center; padding:0.35rem 0.1rem 0.45rem; border:1px solid transparent; border-radius:10px; background:transparent; font:inherit; color:var(--text); cursor:pointer; min-width:0; transition:background .2s, border-color .2s; }
+  .mc-col:hover{ background:color-mix(in srgb, var(--ice) 8%, transparent); }
+  .mc-col.is-sel{ border-color:var(--text-muted); }
+  .mc-bar{ display:block; align-self:end; width:100%; max-width:34px; border-radius:6px 6px 2px 2px; transition:height .5s cubic-bezier(.2,.7,.2,1), background .3s; background:var(--ice); }
+  .mc-col.low .mc-bar{ background:color-mix(in srgb, var(--ice) 70%, transparent); }
+  .mc-col.mod .mc-bar{ background:var(--warn); }
+  .mc-col.high .mc-bar{ background:var(--danger, #E5584F); }
+  .mc-day{ font-size:0.66rem; letter-spacing:0.08em; color:var(--text-muted); }
+  .mc-key{ display:flex; flex-wrap:wrap; gap:0.4rem 1rem; align-items:center; font-size:0.62rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--text-muted); }
+  .mc-key span::before{ content:""; display:inline-block; width:10px; height:10px; border-radius:2px; margin-right:0.4rem; vertical-align:-1px; }
+  .mc-key .low::before{ background:color-mix(in srgb, var(--ice) 70%, transparent); } .mc-key .mod::before{ background:var(--warn); } .mc-key .high::before{ background:var(--danger, #E5584F); }
+  .mc-key .ref::before{ background:color-mix(in srgb, var(--ice) 28%, transparent); }
+  .mc-key em{ font-style:normal; margin-left:auto; }
+  .mc-z{ font-size:0.6rem; letter-spacing:0.1em; text-transform:uppercase; border:1px solid currentColor; border-radius:999px; padding:0.1rem 0.5rem; }
+  .mc-z.low{ color:var(--ice); } .mc-z.mod{ color:var(--warn); } .mc-z.high{ color:var(--danger, #E5584F); }
+
+  /* basketball periodisation */
+  .pd-wrap{ display:grid; gap:0.4rem; }
+  .pd-phases{ display:grid; grid-template-columns:5fr 5fr 2fr; gap:0.3rem; }
+  .pd-ph{ text-align:center; font-family:"IBM Plex Mono", monospace; font-size:0.6rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--text-muted); border-bottom:2px solid var(--line); padding-bottom:0.25rem; transition:color .25s, border-color .25s; }
+  .pd-bars{ display:grid; grid-template-columns:repeat(12, minmax(0,1fr)); gap:0.25rem; height:190px; align-items:stretch; }
+  .pd-col{ display:grid; grid-template-rows:1fr auto; gap:0.3rem; justify-items:center; padding:0; border:none; background:transparent; font:inherit; color:var(--text); cursor:pointer; min-width:0; transition:opacity .3s; }
+  .pd-bar{ align-self:end; display:block; width:100%; border-radius:5px 5px 2px 2px; background:color-mix(in srgb, var(--ice) 70%, transparent); transition:background .3s; }
+  .pd-col.deload .pd-bar{ background:color-mix(in srgb, var(--ice) 28%, transparent); border:1px dashed var(--ice); }
+  .pd-w{ font-size:0.62rem; color:var(--text-muted); }
+  .vz-pd[data-sel="build"] .pd-col:not(.ph-build), .vz-pd[data-sel="intensify"] .pd-col:not(.ph-intensify), .vz-pd[data-sel="taper"] .pd-col:not(.ph-taper){ opacity:0.28; }
+  .vz-pd[data-sel="build"] .pd-col.ph-build .pd-bar, .vz-pd[data-sel="intensify"] .pd-col.ph-intensify .pd-bar, .vz-pd[data-sel="taper"] .pd-col.ph-taper .pd-bar{ background:var(--accent); }
+  .vz-pd[data-sel="build"] .pd-col.ph-build.deload .pd-bar, .vz-pd[data-sel="intensify"] .pd-col.ph-intensify.deload .pd-bar, .vz-pd[data-sel="taper"] .pd-col.ph-taper.deload .pd-bar{ background:color-mix(in srgb, var(--accent) 35%, transparent); border-color:var(--accent); }
+  .vz-pd[data-sel="build"] .pd-ph.build, .vz-pd[data-sel="intensify"] .pd-ph.intensify, .vz-pd[data-sel="taper"] .pd-ph.taper{ color:var(--accent); border-bottom-color:var(--accent); }
+
+  /* project card states, collapse control and gentle close */
+  .project-card.is-reading{ border-color:var(--accent) !important; box-shadow:0 0 0 1px var(--accent), 0 18px 40px rgba(0,0,0,0.35) !important; transition:box-shadow .35s ease, border-color .35s ease; }
+  .project-card.was-read .project-toggle-label::after, .project-card.was-read .project-toggle::after{ content:" · read ✓"; color:var(--text-muted); font-weight:400; }
+  .case-close{ border-color:color-mix(in srgb, var(--accent) 65%, var(--line)) !important; display:inline-flex; align-items:center; gap:0.5rem; }
+  .case-close:hover{ background:var(--accent); color:#050807 !important; }
+  .case-esc{ font-family:"IBM Plex Mono", monospace; font-size:0.58rem; letter-spacing:0.06em; padding:0.1rem 0.35rem; border:1px solid currentColor; border-radius:4px; opacity:0.6; }
+  @media (max-width:640px){ .case-esc, .case-long{ display:none; } .case-close{ white-space:nowrap; } }
+  .case-eyebrow{ white-space:nowrap; }
+  .case-end{ margin-top:2.5rem; padding-top:1.5rem; border-top:1px solid var(--line); display:flex; justify-content:center; }
+  .case-end-btn{ background:none; color:var(--text); border:1px solid color-mix(in srgb, var(--accent) 65%, var(--line)); border-radius:999px; padding:0.8rem 1.5rem; font-size:0.78rem; letter-spacing:0.1em; text-transform:uppercase; cursor:pointer; }
+  .case-end-btn:hover{ background:var(--accent); color:#050807; }
+  @keyframes drawerOut{ to{ transform:translateX(28px); opacity:0; } }
+  @keyframes overlayOut{ to{ opacity:0; } }
+  #case-root.is-closing .case-drawer{ animation:drawerOut .22s ease both; }
+  #case-root.is-closing .case-overlay{ animation:overlayOut .22s ease both; }
+  @media print{ .case-end, #bk-tip, .vz-chips, .vz-seg{ display:none !important; } }
 </style>
 <script type="application/ld+json">
 {
@@ -4286,6 +4443,385 @@ function bkaChart(series, vr, W, H, deload){
   return bkaSvg(vr, W, H, 'horizontal bars of best 20 m time each week, from ' + bkaNum(first, 2) + ' s to ' + bkaNum(last, 2) + ' s', o);
 }
 
+
+/* ===== r160: planned vs completed training load ===== */
+/* [day, session, planned min, target RPE, completed min, completed RPE]; AU = minutes x RPE.
+   Completed weekly totals match each athlete's Week 6 load in BKA. */
+var BKPLAN = [
+  [['Mon','Strength',60,6.5,60,6.5], ['Tue','Speed and tempo',60,6.5,60,6.5], ['Wed','Aerobic',60,5.0,60,5.0], ['Thu','Small-sided games',60,6.0,70,7.0], ['Fri','Activation',40,5.0,40,5.0], ['Sat','Match',90,7.0,90,7.0], ['Sun','Rest',0,0,0,0]],
+  [['Mon','Strength',60,7.0,60,7.0], ['Tue','Repeat sprints',70,7.0,70,8.0], ['Wed','Aerobic',70,6.0,70,6.0], ['Thu','Skills and contact',60,7.0,60,7.0], ['Fri','Activation',40,5.0,40,5.0], ['Sat','Match',80,8.5,80,8.5], ['Sun','Rest',0,0,0,0]],
+  [['Mon','Strength',60,6.0,60,6.0], ['Tue','Tempo intervals',60,7.0,60,7.0], ['Wed','Aerobic',60,5.0,60,5.0], ['Thu','Small-sided games',60,6.0,60,6.0], ['Fri','Activation',40,5.0,40,5.5], ['Sat','Match',90,6.5,90,6.0], ['Sun','Rest',0,0,0,0]],
+  [['Mon','Strength',50,6.0,50,6.0], ['Tue','Sprint progression',70,6.0,70,8.0], ['Wed','Easy aerobic',50,4.0,50,4.0], ['Thu','Strength',60,6.0,60,6.0], ['Fri','Skills and mobility',40,6.0,40,6.0], ['Sat','Conditioning',70,7.0,70,7.0], ['Sun','Rest',0,0,0,0]]
+];
+var BKFULL = { Mon:'Monday', Tue:'Tuesday', Wed:'Wednesday', Thu:'Thursday', Fri:'Friday', Sat:'Saturday', Sun:'Sunday' };
+function bkaPlanRows(ai){
+  return (BKPLAN[ai] || BKPLAN[0]).map(function(r){ return { d:r[0], s:r[1], pm:r[2], pr:r[3], cm:r[4], cr:r[5], p:Math.round(r[2] * r[3]), c:Math.round(r[4] * r[5]) }; });
+}
+function bkaRpeStr(v){ return v ? bkaNum(v, 1) : '0'; }
+function bkaPlanChart(rows, W, H){
+  var n = rows.length, padL = 44, padR = 18, padT = 18, padB = 30, wide = W >= 440, o = '', i;
+  var mx = Math.max.apply(null, rows.map(function(r){ return Math.max(r.p, r.c); }));
+  var sc = bkaScale(0, mx * 1.12, 4);
+  var y = function(v){ return padT + (H - padT - padB) * (1 - (v - sc.t0) / (sc.t1 - sc.t0)); };
+  var bw = (W - padL - padR) / n, cx = function(j){ return padL + bw * (j + 0.5); };
+  for (var k = 0; k <= sc.cnt; k++) { var tv = sc.t0 + k * sc.step, yy = y(tv).toFixed(1); o += '<line class="g" x1="' + padL + '" x2="' + (W - padR) + '" y1="' + yy + '" y2="' + yy + '"/><text class="t" x="' + (padL - 8) + '" y="' + (Number(yy) + 4) + '" text-anchor="end">' + tv + '</text>'; }
+  var barW = Math.min(26, bw * 0.3), gap = 3;
+  rows.forEach(function(r, j){
+    var over = r.p > 0 && (r.c - r.p) >= 40 && (r.c - r.p) / r.p >= 0.10;
+    var xp = cx(j) - barW - gap / 2, xc = cx(j) + gap / 2;
+    if (r.p > 0) o += '<rect class="xb plan" x="' + xp.toFixed(1) + '" y="' + y(r.p).toFixed(1) + '" width="' + barW.toFixed(1) + '" height="' + (y(0) - y(r.p)).toFixed(1) + '" rx="3"/>';
+    if (r.c > 0) o += '<rect class="xb comp' + (over ? ' over' : '') + '" x="' + xc.toFixed(1) + '" y="' + y(r.c).toFixed(1) + '" width="' + barW.toFixed(1) + '" height="' + (y(0) - y(r.c)).toFixed(1) + '" rx="3"/>';
+    if (r.p === 0 && r.c === 0) o += '<text class="ann" x="' + cx(j).toFixed(1) + '" y="' + (y(0) - 8).toFixed(1) + '" text-anchor="middle">rest</text>';
+    if (wide) {
+      if (r.p > 0) o += '<text class="t" x="' + (xp + barW / 2).toFixed(1) + '" y="' + (y(r.p) - 5).toFixed(1) + '" text-anchor="middle">' + r.p + '</text>';
+      if (r.c > 0) o += '<text class="' + (over ? 'val over' : 'val') + '" x="' + (xc + barW / 2).toFixed(1) + '" y="' + (y(r.c) - 5).toFixed(1) + '" text-anchor="middle">' + r.c + '</text>';
+    } else if (over) o += '<text class="val over" x="' + (xc + barW / 2).toFixed(1) + '" y="' + (y(r.c) - 5).toFixed(1) + '" text-anchor="middle">' + r.c + '</text>';
+    o += '<text class="t" x="' + cx(j).toFixed(1) + '" y="' + (H - 8) + '" text-anchor="middle">' + r.d + '</text>';
+  });
+  return '<svg viewBox="0 0 ' + W + ' ' + H + '" width="' + W + '" height="' + H + '" role="img" aria-label="Planned and completed session load for each day of the week, in arbitrary units">' + o + '</svg>';
+}
+function bkaPlanNote(rows){
+  var tp = 0, tc = 0, big = null, small = null;
+  rows.forEach(function(r){
+    tp += r.p; tc += r.c;
+    if (r.p > 0) { var df = r.c - r.p; if (!big || df > big.df) big = { r:r, df:df }; if (!small || Math.abs(df) > Math.abs(small.df)) small = { r:r, df:df }; }
+  });
+  var totals = 'Across the week, ' + tc + ' AU was completed against ' + tp + ' AU planned.';
+  if (big && big.df >= 40 && big.df / big.r.p >= 0.10) {
+    var r = big.r, pct = Math.round(big.df / r.p * 100), how;
+    if (r.cm === r.pm) how = 'the same ' + r.pm + ' minutes, but rated RPE ' + bkaRpeStr(r.cr) + ' against a target of ' + bkaRpeStr(r.pr);
+    else how = r.cm + ' minutes at RPE ' + bkaRpeStr(r.cr) + ' instead of ' + r.pm + ' minutes at a target of ' + bkaRpeStr(r.pr);
+    return BKFULL[r.d] + '’s completed session load was higher than planned (' + r.c + ' AU against ' + r.p + ' AU, +' + pct + '%). It came from ' + how + '. That difference is worth investigating, but it doesn’t automatically mean the athlete is overloaded. I would check what changed in the session and how readiness and soreness looked that day before adjusting the plan. ' + totals;
+  }
+  var s = small ? small.r : null;
+  return 'Completed load tracked the plan closely, so the intended stimulus was delivered.' + (s && small.df !== 0 ? ' The largest gap was ' + BKFULL[s.d] + ' (' + s.c + ' AU against ' + s.p + ' AU planned, ' + (small.df > 0 ? '+' : '−') + Math.round(Math.abs(small.df) / s.p * 100) + '%), which is small enough that I would keep the plan as it is.' : '') + ' ' + totals;
+}
+function bkaPlanHtml(){
+  var st = window.__bka, ai = st.a, rows = bkaPlanRows(ai), a = BKA.athletes[ai];
+  var mEl = document.querySelector('#analytics .an-main'), W = 600;
+  if (mEl && mEl.clientWidth) { var cs = getComputedStyle(mEl); W = mEl.clientWidth - (parseFloat(cs.paddingLeft) || 0) - (parseFloat(cs.paddingRight) || 0); }
+  W = Math.max(280, Math.min(900, Math.round(W)));
+  var H = W < 480 ? 230 : 270;
+  var tr = rows.map(function(r){
+    if (!r.p && !r.c) return '<tr><th scope="row">' + r.d + '</th><td>' + bkaEsc(r.s) + '</td><td>0</td><td>0</td><td>0</td></tr>';
+    var df = r.c - r.p;
+    return '<tr><th scope="row">' + r.d + '</th><td>' + bkaEsc(r.s) + '</td><td>' + r.pm + ' × ' + bkaRpeStr(r.pr) + ' = ' + r.p + '</td><td>' + r.cm + ' × ' + bkaRpeStr(r.cr) + ' = ' + r.c + '</td><td>' + (df > 0 ? '+' : df < 0 ? '−' : '') + Math.abs(df) + '</td></tr>';
+  }).join('');
+  return '<div class="an-pc">' +
+    '<div class="an-label mono">Planned vs completed · Week 6</div>' +
+    '<div class="an-pc-title">Did ' + bkaEsc(a.name) + ' get the stimulus I intended?</div>' +
+    '<div class="an-pc-legend mono"><span><i class="k plan"></i>Planned</span><span><i class="k comp"></i>Completed</span><span class="an-pc-unit">Session load, AU</span></div>' +
+    '<div class="an-svg-wrap">' + bkaPlanChart(rows, W, H) + '</div>' +
+    '<p class="an-pc-note">' + bkaEsc(bkaPlanNote(rows)) + '</p>' +
+    '<p class="an-pc-method"><b>How planned load was estimated.</b> Completed load is the athlete’s session RPE multiplied by session minutes, rated after the session. Perceived exertion cannot be known in advance, so planned load is an estimate: planned minutes multiplied by the RPE I would expect for that type of session. It is a target, not a measurement. Illustrative data only.</p>' +
+    '<details class="an-pc-inputs"><summary class="mono">Show the numbers behind each bar</summary><div class="an-pc-tablewrap"><table><thead><tr><th>Day</th><th>Session</th><th>Planned (min × target RPE)</th><th>Completed (min × RPE)</th><th>Difference, AU</th></tr></thead><tbody>' + tr + '</tbody></table></div></details>' +
+  '</div>';
+}
+(function(){
+  var prev = bkaMainHtml;
+  bkaMainHtml = function(){ return prev() + bkaPlanHtml(); };
+})();
+
+
+/* ===== r170: interactive case-study visuals, tooltips and card states ===== */
+var BKVZ = {};
+
+/* --- tooltip --- */
+function bkTipEl(){
+  var t = document.getElementById('bk-tip');
+  if (!t) { t = document.createElement('div'); t.id = 'bk-tip'; t.setAttribute('role', 'tooltip'); t.hidden = true; document.body.appendChild(t); }
+  return t;
+}
+function bkTipShow(el){
+  var ti = el.getAttribute('data-tip-t'), b = el.getAttribute('data-tip-b'); if (!ti) return;
+  var t = bkTipEl();
+  t.innerHTML = '<b>' + bkaEsc(ti) + '</b>' + (b ? '<span>' + bkaEsc(b) + '</span>' : '');
+  t.hidden = false; t.style.visibility = 'hidden';
+  var r = el.getBoundingClientRect(), tw = t.offsetWidth, th = t.offsetHeight;
+  var x = Math.max(8, Math.min(window.innerWidth - tw - 8, r.left + r.width / 2 - tw / 2)), y = r.top - th - 10;
+  if (y < 8) y = r.bottom + 10;
+  t.style.left = x + 'px'; t.style.top = y + 'px'; t.style.visibility = 'visible';
+}
+function bkTipHide(){ var t = document.getElementById('bk-tip'); if (t) t.hidden = true; }
+function bkVzSelect(el){
+  var fn = BKVZ[el.getAttribute('data-vz')];
+  if (fn) fn(el.getAttribute('data-k'), el.closest('.vz'), el);
+}
+function bkVzBind(){
+  if (window.__bkVzBound) return; window.__bkVzBound = true;
+  var hov = !!(window.matchMedia && window.matchMedia('(hover: hover)').matches);
+  var tipOf = function(e){ return e.target.closest && e.target.closest('[data-tip-t]'); };
+  document.addEventListener('mouseover', function(e){ if (!hov) return; var el = tipOf(e); if (el) bkTipShow(el); });
+  document.addEventListener('mouseout', function(e){ if (tipOf(e)) bkTipHide(); });
+  document.addEventListener('focusin', function(e){ var el = tipOf(e); if (el && el.matches && el.matches(':focus-visible')) bkTipShow(el); });
+  document.addEventListener('focusout', function(e){ if (tipOf(e)) bkTipHide(); });
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape') bkTipHide();
+    if ((e.key === 'Enter' || e.key === ' ') && e.target.closest) { var v = e.target.closest('[data-vz]'); if (v && v.tagName !== 'BUTTON') { e.preventDefault(); bkVzSelect(v); } }
+  });
+  document.addEventListener('click', function(e){
+    var v = e.target.closest && e.target.closest('[data-vz]');
+    if (v) bkVzSelect(v);
+    var el = tipOf(e);
+    if (el && !hov) { bkTipShow(el); } else if (!el) bkTipHide();
+  });
+}
+
+function bkSmooth(p){
+  var d = 'M' + p[0][0] + ',' + p[0][1];
+  for (var i = 0; i < p.length - 1; i++) {
+    var a = p[i - 1] || p[i], b = p[i], c = p[i + 1], e = p[i + 2] || c;
+    d += ' C' + (b[0] + (c[0] - a[0]) / 6).toFixed(1) + ',' + (b[1] + (c[1] - a[1]) / 6).toFixed(1) + ' ' + (c[0] - (e[0] - b[0]) / 6).toFixed(1) + ',' + (c[1] - (e[1] - b[1]) / 6).toFixed(1) + ' ' + c[0] + ',' + c[1];
+  }
+  return d;
+}
+function bkVzHead(t, tag){ return '<div class="vz-head"><div class="vz-t">' + bkaEsc(t) + '</div><span class="vz-tag mono">' + bkaEsc(tag) + '</span></div>'; }
+
+/* --- rugby: CMJ force-time phases --- */
+var BK_CMJ = [
+  { k:'unweight', n:'Unweighting', x:[80, 172], s:'Force drops below body weight as the athlete starts the dip.',
+    t:'The athlete starts to drop, so the plate reads less than body weight. A quick, controlled unweighting sets up the stretch that follows.', l:'How fast and how deep the dip is, and whether it is smooth or hesitant.' },
+  { k:'brake', n:'Braking', x:[172, 250], s:'Force rises above body weight as the muscles slow the descent.',
+    t:'The body is still moving down, so the muscles work eccentrically to stop it. Force climbs above body weight until the athlete reaches the bottom of the dip.', l:'How much force is produced to stop the movement, and how quickly. This is the phase that shows how well load is absorbed.' },
+  { k:'propel', n:'Propulsion', x:[250, 352], s:'The upward push, ending in take-off.',
+    t:'The concentric push. Force peaks and then falls to zero at take-off. The area under this part of the curve (the net impulse) sets take-off velocity, and take-off velocity sets jump height.', l:'Peak force, and how quickly force is produced. Two athletes can jump the same height with very different shapes here.' },
+  { k:'flight', n:'Flight', x:[352, 434], s:'Off the plate, so force reads about zero.',
+    t:'The athlete is in the air, so force reads close to zero. Flight time gives jump height using h = g × t² / 8. For a 34.7 cm jump that works out at a take-off velocity of about 2.6 m/s and a flight time of about 0.53 s.', l:'Flight time, and a clean take-off with the legs straight.' },
+  { k:'land', n:'Landing', x:[434, 540], s:'A spike of force as the athlete lands.',
+    t:'Force spikes as the athlete lands and then settles back to body weight. This is the impact the legs must absorb, which matters for jump volume and for athletes returning from injury.', l:'Landing force and how quickly the athlete stabilises.' }
+];
+function bkCmjHtml(){
+  var pts = [[20,170],[80,170],[105,190],[128,206],[150,192],[172,170],[195,128],[220,96],[250,88],[272,52],[288,40],[310,72],[332,150],[346,222],[352,250],[380,250],[420,250],[434,250],[440,120],[447,18],[458,92],[472,170],[490,205],[515,180],[540,168],[580,170]];
+  var bands = BK_CMJ.map(function(p, i){
+    var w = p.x[1] - p.x[0];
+    return '<g class="vz-band' + (i % 2 ? ' alt' : '') + '" data-vz="cmj" data-k="' + p.k + '" tabindex="0" role="button" aria-label="' + bkaEsc(p.n + ': ' + p.s) + '" data-tip-t="' + bkaEsc(p.n) + '" data-tip-b="' + bkaEsc(p.s) + '">' +
+      '<rect class="vzb-bg" x="' + p.x[0] + '" y="14" width="' + w + '" height="248"/><text class="vzb-l" x="' + (p.x[0] + w / 2) + '" y="278" text-anchor="middle">' + p.n.toUpperCase() + '</text></g>';
+  }).join('');
+  var chips = BK_CMJ.map(function(p, i){ return '<button type="button" class="vz-chip" data-vz="cmj" data-k="' + p.k + '" aria-pressed="false"><span class="mono">' + (i + 1) + '</span>' + p.n + '</button>'; }).join('');
+  return '<figure class="vz vz-cmj" data-sel="">' + bkVzHead('Countermovement jump: force-time trace', 'Illustrative curve') +
+    '<p class="vz-sub">Hover or tap a phase to see what happens in it and what I would look at.</p>' +
+    '<div class="vz-svgwrap"><svg viewBox="0 0 600 290" role="group" aria-label="Illustrative force-time curve for a countermovement jump, split into five phases">' +
+      bands +
+      '<line class="vz-bw" x1="20" x2="580" y1="170" y2="170"/><text class="vz-bwl" x="24" y="163">Body weight</text>' +
+      '<line class="vz-zero" x1="20" x2="580" y1="250" y2="250"/><text class="vz-bwl" x="24" y="244">Zero force</text>' +
+      '<path class="vz-curve" d="' + bkSmooth(pts) + '"/>' +
+      '<circle class="vz-dot" cx="288" cy="40" r="4.5"/><text class="vz-ann" x="298" y="34">Peak force</text>' +
+      '<circle class="vz-dot" cx="352" cy="250" r="4.5"/><text class="vz-ann" x="330" y="240" text-anchor="end">Take-off</text>' +
+      '<circle class="vz-dot" cx="447" cy="18" r="4.5"/><text class="vz-ann" x="457" y="22">Landing impact</text>' +
+    '</svg></div>' +
+    '<div class="vz-chips" role="group" aria-label="Jump phase">' + chips + '</div>' +
+    '<div class="vz-detail" aria-live="polite"></div>' +
+    '<figcaption class="vz-cap">Illustrative curve drawn to show the shape of a CMJ. It is not this athlete’s measured trace. The tested result was 34.7 cm.</figcaption></figure>';
+}
+BKVZ.cmj = function(k, root){
+  var p = BK_CMJ.filter(function(x){ return x.k === k; })[0]; if (!p || !root) return;
+  root.querySelectorAll('.vz-band').forEach(function(b){ b.classList.toggle('is-on', b.getAttribute('data-k') === k); });
+  root.querySelectorAll('.vz-chip').forEach(function(b){ b.setAttribute('aria-pressed', String(b.getAttribute('data-k') === k)); });
+  root.setAttribute('data-sel', k);
+  root.querySelector('.vz-detail').innerHTML = '<div class="vz-dt">' + bkaEsc(p.n) + '</div><p>' + bkaEsc(p.t) + '</p><p class="vz-look"><span class="mono">What I look at</span> ' + bkaEsc(p.l) + '</p>';
+};
+
+/* --- rugby: priority tiles --- */
+var BK_TILES = [
+  { tag:'Maintain', cls:'keep', t:'20 m sprint, 3.32 s', b:'Competitive acceleration and speed for the position. The aim is to keep it while top-speed work is added.', n:'Maintain acceleration, then develop max velocity' },
+  { tag:'Develop', cls:'dev', t:'CMJ, 34.7 cm', b:'A solid lower-body power output, but below what elite backs typically produce.', n:'Plyometric and ballistic emphasis' },
+  { tag:'Develop', cls:'dev', t:'Bronco, 5:37', b:'Points to a conditioning base capable of repeat efforts across a match, with room to close the gap to elite repeat-sprint benchmarks.', n:'Repeat-sprint and HIIT focus' },
+  { tag:'Develop', cls:'dev', t:'Trap-bar deadlift, 1.71× bodyweight', b:'A reasonable absolute strength foundation, but below the roughly 2× bodyweight often cited as a target for transferring strength into speed and power.', n:'Progressive maximal strength' }
+];
+function bkRugbyTiles(body){
+  var dash = body.querySelector('.metric-dashboard'); if (!dash || dash.getAttribute('data-vz-on')) return;
+  var panels = dash.querySelectorAll('.metric-panel'); if (panels.length !== 4) return;
+  dash.setAttribute('data-vz-on', '1');
+  panels.forEach(function(pn, i){
+    var d = BK_TILES[i]; var impl = pn.querySelector('.metric-hover-interp');
+    pn.classList.add('mt', d.cls);
+    pn.setAttribute('data-tip-t', d.t); pn.setAttribute('data-tip-b', d.b + ' Next: ' + d.n + '.');
+    pn.setAttribute('aria-label', d.t + '. ' + d.b + ' Next: ' + d.n + '.');
+    var face = pn.querySelector('.metric-face');
+    face.insertAdjacentHTML('afterbegin', '<span class="mt-tag mono">' + d.tag + '</span>');
+    face.insertAdjacentHTML('beforeend', '<div class="mt-next">' + bkaEsc(impl ? impl.textContent : '') + '</div>');
+  });
+  dash.insertAdjacentHTML('afterend', '<div class="mt-legend mono"><span class="keep">Maintain</span><span class="dev">Development priority</span><span class="mt-hint">Hover or tap a tile for what it shows.</span></div>');
+}
+
+/* --- Mark: six-week progression --- */
+function bkMkProg(body){
+  var facts = body.querySelector('.mk-facts');
+  if (!facts || body.querySelector('.vz-mk') || typeof MK === 'undefined' || !MK.ov) return;
+  var rows = MK.ov.map(function(r){
+    var g = /(\d+)\D+(\d+)/.exec(r[4]) || [0, 0, 0], w = /(\d+)\D+(\d+)/.exec(r[5]) || [0, 0, 0];
+    return { n:r[0], e:r[1], days:r[2], len:r[3], gym:r[4], walk:r[5], tot:parseInt(r[6], 10), str:r[7], gm:+g[1] * +g[2], wm:+w[1] * +w[2], rpe:(/RPE\s*([\d–-]+)/.exec(r[7]) || [0, ''])[1] };
+  });
+  var max = Math.max.apply(null, rows.map(function(r){ return r.tot; }));
+  var tag = { 3:'+1 set', 4:'Load step', 5:'Review' };
+  var cols = rows.map(function(r, i){
+    var lvl = i / (rows.length - 1);
+    return '<button type="button" class="mkp-col" data-vz="mk" data-k="' + i + '" aria-pressed="false" style="--lv:' + Math.round(lvl * 100) + '%" data-tip-t="Week ' + r.n + ' · ' + bkaEsc(r.e) + '" data-tip-b="' + r.tot + ' planned aerobic minutes. Strength ' + bkaEsc(r.str) + '.">' +
+      '<span class="mkp-val">' + r.tot + '</span><span class="mkp-track"><span class="mkp-bar" style="height:' + (r.tot / (max * 1.05) * 100).toFixed(1) + '%"></span></span>' +
+      '<span class="mkp-w mono">W' + r.n + '</span><span class="mkp-rpe mono">RPE ' + bkaEsc(r.rpe) + '</span><span class="mkp-ms mono">' + (tag[i] || '') + '</span></button>';
+  }).join('');
+  var html = '<figure class="vz vz-mk">' + bkVzHead('Six-week progression', 'As submitted') +
+    '<p class="vz-sub">Planned aerobic minutes per week (bars) with strength effort underneath. Aerobic time goes up first, then one set, then a conditional load step. Select a week for the detail.</p>' +
+    '<div class="mkp" role="group" aria-label="Weekly progression">' + cols + '</div><div class="vz-detail" aria-live="polite"></div></figure>';
+  facts.insertAdjacentHTML('afterend', html);
+  var root = body.querySelector('.vz-mk'); root.__rows = rows; BKVZ.mk('5', root);
+}
+BKVZ.mk = function(k, root){
+  var r = root && root.__rows && root.__rows[+k]; if (!r) return;
+  root.querySelectorAll('.mkp-col').forEach(function(b){ b.setAttribute('aria-pressed', String(b.getAttribute('data-k') === String(k))); });
+  root.querySelector('.vz-detail').innerHTML = '<div class="vz-dt">Week ' + r.n + ' · ' + bkaEsc(r.e) + '</div>' +
+    '<p>Gym ' + bkaEsc(r.days) + ', ' + bkaEsc(r.len) + ' per session. Strength ' + bkaEsc(r.str) + '.</p>' +
+    '<p class="vz-look"><span class="mono">Aerobic time</span> ' + r.tot + ' min a week: gym cardio ' + bkaEsc(r.gym) + ' (' + r.gm + ' min) plus walks or play ' + bkaEsc(r.walk) + ' (' + r.wm + ' min).</p>';
+};
+
+/* --- soccer: sample week by phase --- */
+var BK_MC = {
+  days:['MON','TUE','WED','THU','FRI','SAT','SUN'],
+  phases:[
+    { n:'Rebuild', w:'Weeks 1–2', t:'Hamstring-specific strength work, with pain-free strength testing before anything is progressed. Sprinting is not introduced yet.',
+      d:[['Hamstring strength',45,'Strength work targeting the hamstrings, kept well within what is tolerated.'],['Easy aerobic',30,'Low-impact aerobic work to keep fitness ticking over.'],['Strength and core',50,'Strength work for the hips and trunk.'],['Recovery',15,'Light movement only.'],['Strength',45,'A second hamstring-focused strength session.'],['Rest',8,'Full rest.'],['Easy aerobic',25,'Low-impact aerobic work.']] },
+    { n:'Build', w:'Weeks 3–5', t:'Progressive sprint exposure. Graded sprint volumes have to be tolerated before the next step. Week 5 is the sample week.',
+      d:[['Strength',56,'Strength work continues.'],['Sprint exposure',78,'Graded sprint volume at a controlled intensity.'],['Recovery',22,'Light movement to settle the week.'],['Strength and sprint',67,'Strength paired with sprint work.'],['Conditioning',50,'Aerobic and repeat-effort conditioning.'],['Rest',9,'Full rest.'],['Match simulation',89,'The highest demand of the week: on-field work that mimics match intensity.']] },
+    { n:'Return', w:'Weeks 6–8', t:'Change-of-direction work returns, then match-pace demands, finishing with the final on-field, criteria-based assessment instead of a calendar date.',
+      d:[['Strength',60,'Strength work continues at a higher load.'],['Sprint and change of direction',82,'Sprinting with cutting and turning reintroduced.'],['Recovery',22,'Light movement to settle the week.'],['Match-pace drills',78,'Drills at the speed and decision-making of play.'],['Conditioning',55,'Aerobic and repeat-effort conditioning.'],['Rest',9,'Full rest.'],['Criteria-based assessment',85,'The on-field assessment used to decide readiness for full training.']] }
+  ]
+};
+function bkMcZone(v){ return v < 35 ? 'low' : v < 65 ? 'mod' : 'high'; }
+function bkMcHtml(){
+  var seg = BK_MC.phases.map(function(p, i){ return '<button type="button" class="vz-seg-b" data-vz="mcp" data-k="' + i + '" aria-pressed="false"><span>' + p.n + '</span><em class="mono">' + p.w + '</em></button>'; }).join('');
+  var cols = BK_MC.days.map(function(d, i){ return '<button type="button" class="mc-col" data-vz="mcd" data-k="' + i + '" aria-pressed="false"><span class="mc-bar"></span><span class="mc-day mono">' + d + '</span></button>'; }).join('');
+  return '<figure class="vz vz-mc">' + bkVzHead('Sample week by phase', 'Illustrative') +
+    '<div class="vz-seg" role="group" aria-label="Program phase">' + seg + '</div>' +
+    '<p class="vz-sub mc-desc"></p>' +
+    '<div class="mc-bars" role="group" aria-label="Relative intensity by day">' + cols + '</div>' +
+    '<div class="mc-key mono"><span class="low">Low</span><span class="mod">Moderate</span><span class="high">High</span><em>relative intensity</em></div>' +
+    '<div class="vz-detail" aria-live="polite"></div>' +
+    '<figcaption class="vz-cap">Illustrative sample weeks, drawn to show how the pattern changes across phases. Not a prescription.</figcaption></figure>';
+}
+function bkMcRender(root){
+  var pi = root.__p, di = root.__d, P = BK_MC.phases[pi];
+  root.querySelectorAll('.vz-seg-b').forEach(function(b){ b.setAttribute('aria-pressed', String(+b.getAttribute('data-k') === pi)); });
+  root.querySelector('.mc-desc').textContent = P.t;
+  root.querySelectorAll('.mc-col').forEach(function(c, i){
+    var d = P.d[i], z = bkMcZone(d[1]);
+    c.className = 'mc-col ' + z + (i === di ? ' is-sel' : '');
+    c.setAttribute('aria-pressed', String(i === di));
+    c.setAttribute('data-tip-t', BK_MC.days[i] + ' · ' + d[0]);
+    c.setAttribute('data-tip-b', (z === 'low' ? 'Low' : z === 'mod' ? 'Moderate' : 'High') + ' relative intensity. ' + d[2]);
+    c.querySelector('.mc-bar').style.height = d[1] + '%';
+  });
+  var s = P.d[di], zz = bkMcZone(s[1]);
+  root.querySelector('.vz-detail').innerHTML = '<div class="vz-dt">' + BK_MC.days[di] + ' · ' + bkaEsc(s[0]) + ' <span class="mc-z ' + zz + ' mono">' + (zz === 'low' ? 'Low' : zz === 'mod' ? 'Moderate' : 'High') + '</span></div><p>' + bkaEsc(s[2]) + '</p>';
+}
+BKVZ.mcp = function(k, root){ if (!root) return; root.__p = +k; bkMcRender(root); };
+BKVZ.mcd = function(k, root){ if (!root) return; root.__d = +k; bkMcRender(root); };
+
+/* --- basketball: periodisation --- */
+var BK_PD = {
+  load:[33,44,55,61,67,78,89,56,100,94,50,28], deload:7,
+  phases:{
+    build:{ n:'Build', a:0, b:4, w:'Weeks 1–5', t:'Strength and work capacity. Load climbs steadily so the squad builds a base before intensity rises.', m:'Session RPE and jump performance, to confirm the squad is absorbing the load.' },
+    intensify:{ n:'Intensify', a:5, b:9, w:'Weeks 6–10', t:'Power and game-speed qualities, closer to competition. A deliberate deload in Week 8 manages fatigue in the middle of the block.', m:'Session RPE and jump performance. A drop in jump height alongside a rise in RPE is a cue to look at fatigue.' },
+    taper:{ n:'Taper', a:10, b:11, w:'Weeks 11–12', t:'Freshness. Volume comes down so the squad arrives at the tournament fresh rather than fatigued.', m:'Session RPE and jump performance, to check the squad is arriving fresh.' }
+  }
+};
+function bkPdPhase(i){ var P = BK_PD.phases; return i <= 4 ? 'build' : i <= 9 ? 'intensify' : 'taper'; }
+function bkPdHtml(){
+  var P = BK_PD.phases, ks = ['build', 'intensify', 'taper'];
+  var seg = ks.map(function(k){ return '<button type="button" class="vz-seg-b" data-vz="pd" data-k="' + k + '" aria-pressed="false"><span>' + P[k].n + '</span><em class="mono">' + P[k].w + '</em></button>'; }).join('');
+  var cols = BK_PD.load.map(function(v, i){
+    var ph = bkPdPhase(i), dl = i === BK_PD.deload;
+    return '<button type="button" class="pd-col ph-' + ph + (dl ? ' deload' : '') + '" data-vz="pd" data-k="' + ph + '" aria-pressed="false" data-tip-t="Week ' + (i + 1) + ' · ' + P[ph].n + (dl ? ' (deload)' : '') + '" data-tip-b="' + (dl ? 'A deliberate deload to manage fatigue. ' : '') + 'Relative load about ' + v + '% of the block peak.">' +
+      '<span class="pd-bar" style="height:' + v + '%"></span><span class="pd-w mono">' + (i + 1) + '</span></button>';
+  }).join('');
+  return '<figure class="vz vz-pd" data-sel="">' + bkVzHead('Twelve-week periodisation', 'Illustrative curve') +
+    '<div class="vz-seg" role="group" aria-label="Phase">' + seg + '</div>' +
+    '<div class="pd-wrap"><div class="pd-phases"><span class="pd-ph build">Build</span><span class="pd-ph intensify">Intensify</span><span class="pd-ph taper">Taper</span></div><div class="pd-bars" role="group" aria-label="Relative load by week">' + cols + '</div></div>' +
+    '<div class="mc-key mono"><span class="ref">Lighter bar = deload week</span><em>relative load, % of block peak</em></div>' +
+    '<div class="vz-detail" aria-live="polite"><div class="vz-dt">Select a phase</div><p>Choose Build, Intensify or Taper to highlight those weeks and see what the phase is for.</p></div>' +
+    '<figcaption class="vz-cap">Illustrative curve drawn to show the shape of the block, including the planned Week 8 deload. Not measured data.</figcaption></figure>';
+}
+BKVZ.pd = function(k, root){
+  if (!root) return; var P = BK_PD.phases[k]; if (!P) return;
+  var off = root.getAttribute('data-sel') === k; var sel = off ? '' : k;
+  root.setAttribute('data-sel', sel);
+  root.querySelectorAll('.vz-seg-b').forEach(function(b){ b.setAttribute('aria-pressed', String(b.getAttribute('data-k') === sel)); });
+  root.querySelectorAll('.pd-col').forEach(function(c){ c.setAttribute('aria-pressed', String(c.classList.contains('ph-' + sel))); });
+  root.querySelector('.vz-detail').innerHTML = sel ? '<div class="vz-dt">' + P.n + ' · ' + P.w + '</div><p>' + bkaEsc(P.t) + '</p><p class="vz-look"><span class="mono">What I monitor</span> ' + bkaEsc(P.m) + '</p>' : '<div class="vz-dt">Select a phase</div><p>Choose Build, Intensify or Taper to highlight those weeks and see what the phase is for.</p>';
+};
+
+/* --- drawer wiring --- */
+function bkCaseVisuals(){
+  var d = document.querySelector('.case-drawer'); if (!d) return;
+  bkVzBind();
+  var body = d, title = (d.querySelector('.case-title') || {}).textContent || '';
+  if (d.getAttribute('data-vz-done')) return;
+  d.setAttribute('data-vz-done', '1');
+  var anchor = d.querySelector('.case-text, .project-expand-block, .project-expand');
+  if (/Rugby/i.test(title)) {
+    bkRugbyTiles(body);
+    var old = [].filter.call(body.querySelectorAll('.project-radar'), function(r){ return /Countermovement/i.test(r.textContent); })[0];
+    var w = document.createElement('div'); w.innerHTML = bkCmjHtml();
+    if (old) old.parentNode.replaceChild(w.firstChild, old); else body.appendChild(w.firstChild);
+    BKVZ.cmj('propel', body.querySelector('.vz-cmj'));
+  } else if (/Mark/i.test(title)) {
+    bkMkProg(body);
+  } else if (/Soccer/i.test(title)) {
+    var s = document.createElement('div'); s.innerHTML = bkMcHtml(); if (anchor) anchor.parentNode.insertBefore(s.firstChild, anchor); else d.appendChild(s.firstChild);
+    var r = body.querySelector('.vz-mc'); r.__p = 1; r.__d = 6; bkMcRender(r);
+  } else if (/Basketball/i.test(title)) {
+    var b = document.createElement('div'); b.innerHTML = bkPdHtml(); if (anchor) anchor.parentNode.insertBefore(b.firstChild, anchor); else d.appendChild(b.firstChild);
+  }
+  /* collapse control at the end of the case study */
+  if (!d.querySelector('.case-end')) {
+    var end = document.createElement('div'); end.className = 'case-end';
+    end.innerHTML = '<button type="button" class="case-end-btn mono" data-case-close>Close case study <span aria-hidden="true">✕</span></button>';
+    d.appendChild(end);
+  }
+  var cb = d.querySelector('.case-top .case-close');
+  if (cb && !cb.getAttribute('data-v2')) { cb.setAttribute('data-v2', '1'); cb.innerHTML = 'Close<span class="case-long"> case study</span> <span aria-hidden="true">✕</span><kbd class="case-esc">Esc</kbd>'; }
+}
+(function(){
+  var prev = bkDrawerExtras;
+  bkDrawerExtras = function(){ prev(); bkCaseVisuals(); };
+})();
+
+/* --- card open/read state and gentle close --- */
+function bkCaseState(){
+  bkCardMarks();
+  if (window.__bkCaseState) return; window.__bkCaseState = true;
+  var rm = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.addEventListener('click', function(e){
+    var card = e.target.closest && e.target.closest('.project-card');
+    if (card && !document.getElementById('case-root') && !document.querySelector('.case-drawer')) window.__bkOpenTitle = (card.querySelector('.project-title') || {}).textContent;
+    if (window.__bkPassClose || rm) return;
+    var c = e.target.closest && e.target.closest('[data-case-close]'); if (!c) return;
+    var root = document.getElementById('case-root'); if (!root || root.classList.contains('is-closing')) return;
+    e.stopImmediatePropagation(); e.preventDefault();
+    root.classList.add('is-closing');
+    window.setTimeout(function(){ window.__bkPassClose = true; try { c.click(); } finally { window.__bkPassClose = false; } }, 220);
+  }, true);
+  document.addEventListener('keydown', function(e){
+    if (e.key !== 'Escape' || window.__bkPassClose || rm) return;
+    var root = document.getElementById('case-root'); if (!root || root.classList.contains('is-closing')) return;
+    e.stopImmediatePropagation();
+    root.classList.add('is-closing');
+    window.setTimeout(function(){ window.__bkPassClose = true; try { document.dispatchEvent(new KeyboardEvent('keydown', { key:'Escape', bubbles:true })); } finally { window.__bkPassClose = false; } }, 220);
+  }, true);
+  new MutationObserver(bkCardMarks).observe(document.body, { childList:true });
+}
+function bkCardMarks(){
+  var open = !!(document.getElementById('case-root') || document.querySelector('.case-drawer'));
+  var was = window.__bkWasOpen; window.__bkWasOpen = open;
+  window.__bkRead = window.__bkRead || {};
+  if (was && !open && window.__bkOpenTitle) window.__bkRead[window.__bkOpenTitle] = 1;
+  document.querySelectorAll('.project-card').forEach(function(c){
+    var t = (c.querySelector('.project-title') || {}).textContent, cur = open && t === window.__bkOpenTitle;
+    c.classList.toggle('is-reading', cur);
+    c.classList.toggle('was-read', !cur && !!window.__bkRead[t]);
+  });
+}
+
 function bkInitExtras(){
   bkPages();
   bkTestingPage();
@@ -4306,6 +4842,7 @@ function bkInitExtras(){
   bkOwnMatch();
   bkCinema();
   bkMobileActive();
+  bkCaseState();
   bkProjectPhotos();
   bkProjectCovers();
   bkCredits();
