@@ -3208,6 +3208,11 @@
   @media (max-width:900px){ .forge-card{ grid-template-columns:minmax(0,1fr); } .fg-ui{ transform:none; } }
   @media (max-width:560px){ .fg-pts li{ grid-template-columns:minmax(0,1fr); } }
   @media print{ .forge-card{ break-inside:avoid; background:#fff !important; } }
+
+  /* ===== r550: amber explanation ===== */
+  .an-pc-legend .k.over{ background:var(--warn); }
+  .an-pc-why{ margin:0.2rem 0 0; max-width:70ch; padding:0.7rem 0.95rem; border:1px solid var(--line); border-left:3px solid var(--warn); border-radius:8px; background:var(--surface-2); font-size:0.9rem; line-height:1.55; color:var(--text-muted); }
+  .an-pc-why b{ color:var(--warn); font-weight:600; }
 </style>
 <script type="application/ld+json">
 {
@@ -6742,6 +6747,22 @@ function bkForgeCard(){
 (function(){
   var pu = bkPjUpgrade;
   bkPjUpgrade = function(){ pu(); bkForgeCard(); };
+})();
+
+/* ===== r550: explain the amber bar in planned vs completed load ===== */
+(function(){
+  var pp = bkaPlanHtml;
+  bkaPlanHtml = function(){
+    var h = pp(), st = window.__bka;
+    if (!st || typeof bkaPlanRows !== 'function') return h;
+    var over = bkaPlanRows(st.a).filter(function(r){ return r.p > 0 && (r.c - r.p) >= 40 && (r.c - r.p) / r.p >= 0.10; });
+    if (!over.length || h.indexOf('<span class="an-pc-unit">') === -1 || h.indexOf('<p class="an-pc-note">') === -1) return h;
+    h = h.replace('<span class="an-pc-unit">', '<span><i class="k over"></i>Over plan</span><span class="an-pc-unit">');
+    var days = over.map(function(r){ return BKFULL[r.d] + ' was ' + r.c + ' AU against ' + r.p + ' AU planned (+' + Math.round((r.c - r.p) / r.p * 100) + '%)'; }).join('; ');
+    var names = over.map(function(r){ return BKFULL[r.d]; }).join(' and ');
+    var why = '<p class="an-pc-why"><b>Why ' + bkaEsc(names) + (over.length > 1 ? ' are' : ' is') + ' amber.</b> I colour a completed bar amber when it is at least 10% and at least 40 AU above plan, so the day stands out for a closer look. ' + bkaEsc(days) + '. It flags a question, not a verdict.</p>';
+    return h.replace('<p class="an-pc-note">', why + '<p class="an-pc-note">');
+  };
 })();
 
 function bkInitExtras(){
